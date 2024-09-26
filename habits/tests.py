@@ -12,9 +12,9 @@ class HabitTestCase(APITestCase):
     def setUp(self) -> None:
         self.user = User.objects.create(email='test@test.ru')
         self.habit1 = Habit.objects.create(
-            place='home',
-            time='14:00',
-            action='VK',
+            place='work',
+            time='07:00',
+            action='drink water',
             sign_of_a_pleasant_habit=True,
             frequency=1,
             time_to_complete='20',
@@ -22,8 +22,8 @@ class HabitTestCase(APITestCase):
         )
         self.habit2 = Habit.objects.create(
             place='home',
-            time='14:00',
-            action='VK',
+            time='07:00',
+            action='gymnastics',
             sign_of_a_pleasant_habit=True,
             frequency=1,
             time_to_complete='20',
@@ -37,9 +37,9 @@ class HabitTestCase(APITestCase):
         url = reverse('habits:habit-create')
         data = {
             'place': 'street',
-            'time': '14:00',
-            'action': 'jogging',
-            'award': 'ice cream',
+            'time': '07:00',
+            'action': 'push-ups',
+            'award': 'healthy dinner',
             'frequency': 1,
             'time_to_complete': 120
         }
@@ -80,8 +80,8 @@ class HabitTestCase(APITestCase):
                     'time_to_complete': '00:00:20',
                     'frequency': self.habit1.frequency,
                     'place': self.habit1.place,
-                    'time': '14:00:00',
-                    'date': '2024-09-16',
+                    'time': '07:00:00',
+                    'date': '2024-09-26',
                     'action': self.habit1.action,
                     'sign_of_a_pleasant_habit': self.habit1.sign_of_a_pleasant_habit,
                     'award': null,
@@ -109,8 +109,8 @@ class HabitTestCase(APITestCase):
                     'time_to_complete': '00:00:20',
                     'frequency': self.habit2.frequency,
                     'place': self.habit2.place,
-                    'time': '14:00:00',
-                    'date': '2024-09-16',
+                    'time': '07:00:00',
+                    'date': '2024-09-26',
                     'action': self.habit2.action,
                     'sign_of_a_pleasant_habit': self.habit2.sign_of_a_pleasant_habit,
                     'award': null,
