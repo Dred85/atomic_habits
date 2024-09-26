@@ -42,8 +42,7 @@ class RelatedHabitValidator:
         if tmp_val:
             if not tmp_val.sign_of_a_pleasant_habit:
                 raise serializers.ValidationError(
-                    "В связанные привычки могут попадать только привычки"
-                    " с признаком приятной привычки."
+                    "В связанные привычки могут попадать только привычки с признаком приятной привычки."
                 )
 
 
@@ -59,8 +58,7 @@ class PleasantHabitValidator:
             value_ = dict(value)
             if value_.get("award") or value_.get("related_habit"):
                 raise serializers.ValidationError(
-                    "У приятной привычки не может быть "
-                    "вознаграждения или связанной привычки."
+                    "У приятной привычки не может быть вознаграждения или связанной привычки."
                 )
 
 
@@ -70,5 +68,5 @@ class FrequencyHabitValidator:
     def __call__(self, value):
         if 0 < value > 7:
             raise serializers.ValidationError(
-                "Нельзя выполнять привычку реже, " "чем 1 раз в 7 дней."
+                "Нельзя выполнять привычку реже, чем 1 раз в 7 дней."
             )
