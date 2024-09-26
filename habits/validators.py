@@ -4,6 +4,8 @@ from rest_framework import serializers
 
 
 class SimultaneousSelectionValidator:
+    """Валидатор одновременного выбора поля вознаграждения и
+    поля связанной привычки."""
 
     def __init__(self, field1, field2):
         self.field1 = field1
@@ -20,6 +22,7 @@ class SimultaneousSelectionValidator:
 
 
 class TimeValidator:
+    """Валидатор на время выполнения привычки"""
 
     def __call__(self, value):
         if value > timedelta(seconds=120):
@@ -29,6 +32,7 @@ class TimeValidator:
 
 
 class RelatedHabitValidator:
+    """Валидатор на связанные привычки """
 
     def __init__(self, field):
         self.field = field
@@ -44,6 +48,8 @@ class RelatedHabitValidator:
 
 
 class PleasantHabitValidator:
+    """Валидатор на приятную привычку"""
+
     def __init__(self, field):
         self.field = field
 
@@ -59,6 +65,8 @@ class PleasantHabitValidator:
 
 
 class FrequencyHabitValidator:
+    """Валидатор на периодичность выполнения привычки"""
+
     def __call__(self, value):
         if 0 < value > 7:
             raise serializers.ValidationError(
