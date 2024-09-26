@@ -26,16 +26,18 @@ class User(AbstractUser):
         **NULLABLE,
     )
 
-    tg_chat_id = models.CharField(max_length=50,
-                                  verbose_name='телеграм chat-id',
-                                  help_text='Укажите телеграм chat-id',
-                                  **NULLABLE)
+    tg_chat_id = models.CharField(
+        max_length=50,
+        verbose_name="телеграм chat-id",
+        help_text="Укажите телеграм chat-id",
+        **NULLABLE,
+    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return f'{self.email}'
+        return f"{self.email}"
 
     class Meta:
         verbose_name = "Пользователь"

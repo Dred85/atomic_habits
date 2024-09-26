@@ -11,17 +11,21 @@ class SimultaneousSelectionValidator:
 
     def __call__(self, value):
         if self.field1 in value and self.field2 in value:
-            raise serializers.ValidationError("Не должно быть заполнено одновременно "
-                                              "и поле вознаграждения, и поле связанной "
-                                              "привычки. Можно заполнить только одно из "
-                                              "двух полей.")
+            raise serializers.ValidationError(
+                "Не должно быть заполнено одновременно "
+                "и поле вознаграждения, и поле связанной "
+                "привычки. Можно заполнить только одно из "
+                "двух полей."
+            )
 
 
 class TimeValidator:
 
     def __call__(self, value):
         if value > timedelta(seconds=120):
-            raise serializers.ValidationError("Время выполнения должно быть не больше 120 секунд.")
+            raise serializers.ValidationError(
+                "Время выполнения должно быть не больше 120 секунд."
+            )
 
 
 class RelatedHabitValidator:
@@ -33,8 +37,10 @@ class RelatedHabitValidator:
         tmp_val = dict(value).get(self.field)
         if tmp_val:
             if not tmp_val.sign_of_a_pleasant_habit:
-                raise serializers.ValidationError("В связанные привычки могут попадать только привычки"
-                                                  " с признаком приятной привычки.")
+                raise serializers.ValidationError(
+                    "В связанные привычки могут попадать только привычки"
+                    " с признаком приятной привычки."
+                )
 
 
 class PleasantHabitValidator:
@@ -45,13 +51,16 @@ class PleasantHabitValidator:
         tmp_val = dict(value).get(self.field)
         if tmp_val:
             value_ = dict(value)
-            if value_.get('award') or value_.get('related_habit'):
-                raise serializers.ValidationError("У приятной привычки не может быть "
-                                                  "вознаграждения или связанной привычки.")
+            if value_.get("award") or value_.get("related_habit"):
+                raise serializers.ValidationError(
+                    "У приятной привычки не может быть "
+                    "вознаграждения или связанной привычки."
+                )
 
 
 class FrequencyHabitValidator:
     def __call__(self, value):
         if 0 < value > 7:
-            raise serializers.ValidationError("Нельзя выполнять привычку реже, "
-                                              "чем 1 раз в 7 дней.")
+            raise serializers.ValidationError(
+                "Нельзя выполнять привычку реже, " "чем 1 раз в 7 дней."
+            )
