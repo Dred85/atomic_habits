@@ -7,7 +7,6 @@ from users.models import User
 
 
 class HabitTestCase(APITestCase):
-
     def setUp(self) -> None:
         self.user = User.objects.create(email="test@test.ru")
         self.habit1 = Habit.objects.create(

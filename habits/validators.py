@@ -32,7 +32,7 @@ class TimeValidator:
 
 
 class RelatedHabitValidator:
-    """Валидатор на связанные привычки """
+    """Валидатор на связанные привычки"""
 
     def __init__(self, field):
         self.field = field
