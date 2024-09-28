@@ -146,9 +146,9 @@ SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 CELERY_BEAT_SCHEDULE = {
-    "block_user": {
-        "task": "materials.tasks.block_user",
-        "schedule": timedelta(seconds=10),
+    'reminder': {
+        'task': 'habits.tasks.reminder',
+        'schedule': timedelta(seconds=2),
     },
 }
 
