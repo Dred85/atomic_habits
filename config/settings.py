@@ -148,7 +148,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 CELERY_BEAT_SCHEDULE = {
     "reminder": {
         "task": "habits.tasks.reminder",
-        "schedule": timedelta(seconds=2),
+        "schedule": timedelta(seconds=10),
     },
 }
 
